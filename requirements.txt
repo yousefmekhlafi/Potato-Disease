@@ -7,4 +7,13 @@ uvicorn
 python-multipart
 pillow
 tensorflow-serving-api
+python-box==6.0.2
+ensure==1.0.2
+kaggle
+scikit-learn
+sklearn-model
+tensorflow
+boto3
+PyYAML
+requests
 -e .
