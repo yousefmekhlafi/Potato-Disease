@@ -1,1 +1,3 @@
-key: value
+data_validation:
+  batch_size: 100
+

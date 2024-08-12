@@ -15,5 +15,9 @@ sklearn-model
 tensorflow
 boto3
 PyYAML
+tqdm
 requests
+pandas
+opencv-python
+torchvision
 -e .

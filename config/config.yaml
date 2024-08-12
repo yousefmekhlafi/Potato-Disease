@@ -1,25 +1,35 @@
 artifacts_root: artifacts
 
-
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: s3://aiportfoliodata/potato-blight-dataset_ver-0.0.1.zip
-  local_data_file: artifacts/data_ingestion/data.zip
-  unzip_dir: artifacts/data_ingestion
+  train_data_source_URL: https://www.dropbox.com/scl/fi/yygtj4pn20onqebi9zbeu/train_data.zip?rlkey=xejca3z1s880obr1y7rks3e8z&st=jslqcrbr&dl=1
+  val_data_source_URL: https://www.dropbox.com/scl/fi/i3h3mwsqwsedqi8jwy5d0/val_data.zip?rlkey=fobpijfq1zuu3ozosvvcfzc37&st=8syh7v71&dl=1
+  test_data_source_URL: https://www.dropbox.com/scl/fi/t141qor6io98rrzzde2lv/test_data.zip?rlkey=dnelepg8b6ghxvrkiajwj56ht&st=0uimuo7s&dl=1
+  local_train_data_file: artifacts/data_ingestion/train_data.zip
+  local_val_data_file: artifacts/data_ingestion/val_data.zip
+  local_test_data_file: artifacts/data_ingestion/test_data.zip
+  unzip_train_dir: artifacts/data_ingestion/train
+  unzip_val_dir: artifacts/data_ingestion/val
+  unzip_test_dir: artifacts/data_ingestion/test
 
 
 
 data_validation:
-  root_dir: artifacts/data_validation
-  STATUS_FILE: artifacts/data_validation/status.txt
-  ALL_REQUIRED_FILES: ["train", "test", "validation"]
+  image_dir: artifacts/data_ingestion/val  # Updated path for validation images
+  labels: 
+    - healthy
+    - early_blight
+    - late_blight
+  batch_size: 100  # Batch size for processing images
+  findings_output_file: artifacts/findings.txt  # Output file for validation findings
 
 
 
 data_transformation:
-  root_dir: artifacts/data_transformation
-  data_path: artifacts/data_ingestion/samsum_dataset
-  tokenizer_name: google/pegasus-cnn_dailymail
+  transformed_dir: artifacts/transformed_datasets
+  unzip_train_dir: artifacts/data_ingestion/train
+  unzip_val_dir: artifacts/data_ingestion/val
+  unzip_test_dir: artifacts/data_ingestion/test
 
 
 
